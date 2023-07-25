@@ -1,0 +1,19 @@
+.ingredients {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient {
+    background-color: rgb(107,142,35);
+    border: 1px rgb(69, 69, 0);
+    padding: 0.7rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ingredientName {
+    font-size: larger;
+    font-weight: bolder;
+}
