@@ -17,3 +17,29 @@
     font-size: larger;
     font-weight: bolder;
 }
+.custom--ingredients {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom--ingredient {
+    background-color: rgb(141, 196, 30);
+    border: 1px rgb(152, 152, 0);
+    padding: 0.7rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.custom--ingredientName {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.measurementType {
+    font-weight: bold;
+}
+
+.custom--Btn {
+    align-items: flex-end;
+}

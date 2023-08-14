@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
+import WhatsinthepantryLogo from '../WhatsinthepantryLogo.png'
+
 
 export const Login = () => {
     const [email, set] = useState("ryan@mathis.com")
@@ -31,7 +33,7 @@ export const Login = () => {
         <main className="container--login">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>What'sInThePantry?</h1>
+                <img className="home__logo__img" src={WhatsinthepantryLogo} alt="What'sInThePantry Logo" />
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>

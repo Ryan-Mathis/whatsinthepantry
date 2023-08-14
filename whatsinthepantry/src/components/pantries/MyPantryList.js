@@ -1,37 +1,49 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Button } from "reactstrap"
 
+export const MyPantryList = ({ userPantryIngredients, userCustomIngredients }) => {
 
-export const MyPantryList = () => {
-    const [userPantryIngredients, setUserPantryIngredients] = useState([])
     const navigate = useNavigate()
 
-    const localPantryUser = localStorage.getItem("pantry_user")
-    const pantryUserObject = JSON.parse(localPantryUser)
+    const pantryUserObject = JSON.parse(localStorage.getItem("pantry_user"))
 
-    useEffect(
-        () => {
-            fetch(`http://localhost:8088/pantries?userId=${pantryUserObject.id}&_expand=ingredient`)
-                .then(response => response.json())
-                .then((userPantryArray) => {
-                    setUserPantryIngredients(userPantryArray)
-                })
-        },
-        []
-    )
-    
-    
     return <>
-        <h2>Ingredient List</h2>
+        <div className="pantryHead">
+            <h2>My Pantry</h2>
+            <h4>Ingredient List</h4>
 
+            <Button
+                className="editPantry"
+                color="warning"
+                onClick={() => navigate(`/editmypantry`)}
+            >
+                Edit Pantry
+            </Button>
+        </div>
         <article className="ingredients">
             {
                 userPantryIngredients.map(
                     (ingredient) => {
-                        return <section className="ingredient" key={ingredient?.ingredient.id}>
-                            <div class="ingredientName">{ingredient?.ingredient.name}</div>
-                            <div class="measurementType">{ingredient?.ingredient.measurementType}</div>
+                        return <section className="ingredient" key={ingredient.id}>
+                            <div className="ingredientName">{ingredient?.ingredient.name}</div>
+                            <div className="measurementType">{ingredient.quantity} {ingredient?.ingredient.measurementType}(s)</div>
                         </section>
+                    }
+                )
+            }
+        </article>
+        <h4>Custom Ingredient List</h4>
+        <article className="custom--ingredients">
+            {
+                userCustomIngredients.map(
+                    (ingredient) => {
+                        if (ingredient.isAdded === true) {
+                            return <section className="custom--ingredient" key={ingredient.id}>
+                                <div className="custom--ingredientName">{ingredient.name}</div>
+                                <div className="measurementType">{ingredient.quantity} {ingredient.measurementType}(s)</div>
+                            </section>
+                        }
                     }
                 )
             }
