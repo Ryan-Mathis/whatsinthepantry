@@ -1,7 +1,8 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-evenly;
+    background-color: rgb(252, 236, 209);
 }
 
 .navbar__item {
@@ -10,12 +11,12 @@
 }
 
 .navbar__logout {
-    margin-left: auto;
+  justify-self: end;
 }
 
 .navbar__link {
     text-decoration: none;
-    color: black;
+    color: rgb(107,142,35);
     font-family: monospace;
     font-size: 1.25rem;
 }

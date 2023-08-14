@@ -1,0 +1,8 @@
+.pantryHead {
+    display: flex;
+    flex-direction: row;
+}
+
+.editPantry {
+    justify-self: end;
+}

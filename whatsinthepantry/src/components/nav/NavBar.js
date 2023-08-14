@@ -5,28 +5,34 @@ import WhatsinthepantryLogo from '../WhatsinthepantryLogo.png'
 export const NavBar = () => {
     const navigate = useNavigate()
 
+    const handleLogout = (evt) => {
+        evt.preventDefault()
+        
+        localStorage.removeItem("pantry_user")
+        navigate("/login", { replace: true })
+    }
+
     return (
         <>
             <ul className="navbar">
-                <Link className="logo__link navbar__link" to="/">
-                    <img className="logo__img" src={WhatsinthepantryLogo} alt="Decoration Station Logo" />
-                </Link>
+                <li className="navbar__item active">
+                    <Link className="logo__link navbar__link" to="/">
+                        <img className="logo__img" src={WhatsinthepantryLogo} alt="What'sInThePantry Logo" />
+                    </Link>
+                </li>
                 <li className="navbar__item active">
                     <Link className="navbar__link" to="/allingredients">All Ingredients</Link>
                 </li>
                 <li className="navbar__item active">
-                    <Link className="navbar__link" to="/mypantry">My Pantry</Link>
+                    <Link className="navbar__link" to="/">My Pantry</Link>
                 </li>
                 <li className="navbar__item active">
-                    <Link className="navbar__link" to="/customingredients">My Custom Ingredients</Link>
+                    <Link className="navbar__link" to="/mycustomingredients">My Custom Ingredients</Link>
                 </li>
                 {
                     localStorage.getItem("pantry_user")
                         ? <li className="navbar__item navbar__logout">
-                            <Link className="navbar__link" to="" onClick={() => {
-                                localStorage.removeItem("pantry_user")
-                                navigate("/", { replace: true })
-                            }}>Logout</Link>
+                            <Link className="navbar__link" to="" onClick={handleLogout}>Logout</Link>
                         </li>
                         : ""
                 }
